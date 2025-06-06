@@ -1,0 +1,17 @@
+<div>
+  <h2>Registrarse</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="regEmail">Email:</label>
+      <input type="email" id="regEmail" [(ngModel)]="user.email" name="regEmail" required>
+    </div>
+    <div>
+      <label for="regPassword">Contraseña:</label>
+      <input type="password" id="regPassword" [(ngModel)]="user.password" name="regPassword" required>
+    </div>
+    <button type="submit">Registrarme</button>
+  </form>
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+  <p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
+  <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia Sesión aquí</a></p>
+</div>

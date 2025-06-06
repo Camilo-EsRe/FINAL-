@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Mis Contactos</h2>
+  <button class="add-button" routerLink="/contacts/new">Añadir Nuevo Contacto</button>
+
+  <div *ngIf="loading">Cargando contactos...</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="!loading && contacts.length === 0 && !errorMessage">
+    <p>No tienes contactos aún. ¡Añade uno nuevo!</p>
+  </div>
+
+  <ul class="contact-list" *ngIf="contacts.length > 0">
+    <li *ngFor="let contact of contacts" class="contact-item">
+      <div class="contact-info">
+        <h3>{{ contact.nombre }} {{ contact.apellido }}</h3>
+        <p><strong>Celular:</strong> {{ contact.celular }}</p>
+        <p *ngIf="contact.telefonoFijo"><strong>Tel. Fijo:</strong> {{ contact.telefonoFijo }}</p>
+        <p *ngIf="contact.email"><strong>Email:</strong> {{ contact.email }}</p>
+      </div>
+      <div class="contact-actions">
+        <button class="edit-button" (click)="editContact(contact._id)">Editar</button>
+        <button class="delete-button" (click)="deleteContact(contact._id)">Eliminar</button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/">Gestor de Contactos</a>
+  </div>
+  <ul class="navbar-nav">
+    <li *ngIf="authService.isLoggedIn()">
+      <a routerLink="/contacts">Mis Contactos</a>
+    </li>
+    <li *ngIf="!authService.isLoggedIn()">
+      <a routerLink="/login">Iniciar Sesión</a>
+    </li>
+    <li *ngIf="!authService.isLoggedIn()">
+      <a routerLink="/register">Registrarse</a>
+    </li>
+    <li *ngIf="authService.isLoggedIn()">
+      <button class="logout-button" (click)="onLogout()">Cerrar Sesión</button>
+    </li>
+  </ul>
+</nav>
